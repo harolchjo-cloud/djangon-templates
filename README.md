@@ -18,3 +18,4 @@ git push -u origin main
 ```
 
 Si necesitas, puedo (a) crear el repo remoto usando tu token/`gh` CLI, o (b) ejecutar el `git push` si me das la URL remota y credenciales.
+# djangon-templates
