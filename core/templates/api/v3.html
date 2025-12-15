@@ -1,156 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API v3 - Nómina y Evaluaciones</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 30px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .endpoints {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .endpoint {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .endpoint:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .endpoint h3 {
-            color: #00f2fe;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-        
-        .endpoint p {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .endpoint a {
-            display: inline-block;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .endpoint a:hover {
-            opacity: 0.8;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #00f2fe;
-            color: #333;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        footer {
-            text-align: center;
-            color: white;
-            margin-top: 40px;
-            padding: 20px;
-            opacity: 0.8;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>📊 API v3</h1>
-            <p>Nómina y Evaluaciones - Gestión de Beneficios</p>
-        </header>
-        
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="badge">GET, POST</span>
-                <h3>Nóminas</h3>
-                <p>Gestiona los registros de nómina de empleados</p>
-                <a href="/api/v3/nominas/">Ver Endpoint →</a>
-            </div>
-            
-            <div class="endpoint">
-                <span class="badge">GET, POST</span>
-                <h3>Evaluaciones</h3>
-                <p>Registra y consulta evaluaciones de desempeño</p>
-                <a href="/api/v3/evaluaciones/">Ver Endpoint →</a>
-            </div>
-            
-            <div class="endpoint">
-                <span class="badge">GET, POST</span>
-                <h3>Beneficios</h3>
-                <p>Administra los beneficios disponibles</p>
-                <a href="/api/v3/beneficios/">Ver Endpoint →</a>
-            </div>
-            
-            <div class="endpoint">
-                <span class="badge">GET, POST</span>
-                <h3>Beneficios Empleados</h3>
-                <p>Asigna beneficios a los empleados</p>
-                <a href="/api/v3/beneficios_empleados/">Ver Endpoint →</a>
-            </div>
-        </div>
-        
-        <footer>
-            <p>Django REST Framework - API v3 | 2025</p>
-        </footer>
+{% extends "base_api.html" %}
+{% block title %}API v3 - Nómina y Evaluaciones{% endblock %}
+{% block header_title %}📊 API v3{% endblock %}
+{% block header_subtitle %}Nómina y Evaluaciones - Gestión de Beneficios{% endblock %}
+{% block extra_head %}
+<style>
+    :root { --color-start: #4facfe; --color-end: #00f2fe; }
+    header { background: linear-gradient(90deg, var(--color-start), var(--color-end)); }
+    .endpoint h3 { color: var(--color-end); }
+    .badge { background: var(--color-end); color: #064; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="endpoints">
+    <div class="endpoint">
+        <span class="badge">GET, POST</span>
+        <h3>Nóminas</h3>
+        <p>Gestiona los registros de nómina de empleados</p>
+        <a class="btn" href="/api/v3/nominas/">Ver Endpoint →</a>
     </div>
-</body>
-</html>
+    <div class="endpoint">
+        <span class="badge">GET, POST</span>
+        <h3>Evaluaciones</h3>
+        <p>Registra y consulta evaluaciones de desempeño</p>
+        <a class="btn" href="/api/v3/evaluaciones/">Ver Endpoint →</a>
+    </div>
+    <div class="endpoint">
+        <span class="badge">GET, POST</span>
+        <h3>Beneficios</h3>
+        <p>Administra los beneficios disponibles</p>
+        <a class="btn" href="/api/v3/beneficios/">Ver Endpoint →</a>
+    </div>
+    <div class="endpoint">
+        <span class="badge">GET, POST</span>
+        <h3>Beneficios Empleados</h3>
+        <p>Asigna beneficios a los empleados</p>
+        <a class="btn" href="/api/v3/beneficios_empleados/">Ver Endpoint →</a>
+    </div>
+</div>
+{% endblock %}

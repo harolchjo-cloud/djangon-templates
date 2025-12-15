@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}API Documentation{% endblock %}</title>
+    <style>
+        :root { --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            min-height:100vh; padding:20px;
+            color: #222;
+        }
+        .container { max-width:1200px; margin:0 auto; }
+        header {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(8px);
+            border-radius: 12px; padding:36px; margin-bottom:28px; text-align:center; color:white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+        header h1 { font-size:2.6em; margin-bottom:6px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+        header p { opacity:0.92; }
+        .content { background: transparent; }
+        footer { text-align:center; color:rgba(255,255,255,0.9); margin-top:38px; padding:18px; opacity:0.85; }
+        /* small helpers for cards */
+        .endpoints { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+        .endpoint { background:white; border-radius:10px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,0.12); }
+        .badge { display:inline-block; padding:6px 12px; border-radius:18px; font-weight:700; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{% block header_title %}Sistema de Gestión RH{% endblock %}</h1>
+            <p>{% block header_subtitle %}API REST de Recursos Humanos{% endblock %}</p>
+        </header>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>{% block footer %}Django REST Framework | Gestión RH{% endblock %}</p>
+        </footer>
+    </div>
+</body>
+</html>
