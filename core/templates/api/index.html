@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - Gestión RH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .version-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-start), var(--color-end));
+        }
+        
+        .version-card:nth-child(1) {
+            --color-start: #667eea;
+            --color-end: #764ba2;
+        }
+        
+        .version-card:nth-child(2) {
+            --color-start: #f093fb;
+            --color-end: #f5576c;
+        }
+        
+        .version-card:nth-child(3) {
+            --color-start: #4facfe;
+            --color-end: #00f2fe;
+        }
+        
+        .version-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .version-card h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .version-card .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .endpoints-list {
+            margin: 25px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .endpoints-list p {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .endpoints-list span {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .version-card a {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            color: white;
+            margin-top: 10px;
+        }
+        
+        .version-card:nth-child(1) a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .version-card:nth-child(2) a {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .version-card:nth-child(3) a {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .version-card a:hover {
+            opacity: 0.85;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            opacity: 0.8;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+            border-left: 4px solid white;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Sistema de Gestión RH</h1>
+            <p>API REST de Recursos Humanos</p>
+        </header>
+        
+        <div class="info-box">
+            <h3>📚 Documentación de API</h3>
+            <p>Selecciona la versión de API que deseas explorar. Cada versión contiene endpoints específicos organizados por función.</p>
+        </div>
+        
+        <div class="version-grid">
+            <!-- API v1 -->
+            <div class="version-card">
+                <h2>API v1</h2>
+                <div class="subtitle">Recursos Básicos</div>
+                <div class="endpoints-list">
+                    <p><span>departamentos</span></p>
+                    <p><span>puestos</span></p>
+                    <p><span>empleados</span></p>
+                </div>
+                <p style="color: #666; margin-bottom: 20px;">Gestiona los recursos fundamentales: departamentos, puestos y empleados</p>
+                <a href="/api/v1/">Explorar API v1 →</a>
+            </div>
+            
+            <!-- API v2 -->
+            <div class="version-card">
+                <h2>API v2</h2>
+                <div class="subtitle">Recursos de Empleados</div>
+                <div class="endpoints-list">
+                    <p><span>contratos</span></p>
+                    <p><span>asistencias</span></p>
+                    <p><span>vacaciones</span></p>
+                </div>
+                <p style="color: #666; margin-bottom: 20px;">Maneja contratos, asistencias y solicitudes de vacaciones</p>
+                <a href="/api/v2/">Explorar API v2 →</a>
+            </div>
+            
+            <!-- API v3 -->
+            <div class="version-card">
+                <h2>API v3</h2>
+                <div class="subtitle">Nómina y Evaluaciones</div>
+                <div class="endpoints-list">
+                    <p><span>nominas</span></p>
+                    <p><span>evaluaciones</span></p>
+                    <p><span>beneficios</span></p>
+                    <p><span>beneficios_empleados</span></p>
+                </div>
+                <p style="color: #666; margin-bottom: 20px;">Gestiona nóminas, evaluaciones y beneficios de empleados</p>
+                <a href="/api/v3/">Explorar API v3 →</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Django REST Framework | Gestión de Recursos Humanos | 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

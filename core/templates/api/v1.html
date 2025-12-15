@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API v1 - Recursos Básicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .endpoint {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .endpoint:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .endpoint h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .endpoint p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .endpoint a {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .endpoint a:hover {
+            opacity: 0.8;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 API v1</h1>
+            <p>Recursos Básicos - Departamentos, Puestos y Empleados</p>
+        </header>
+        
+        <div class="endpoints">
+            <div class="endpoint">
+                <span class="badge">GET, POST</span>
+                <h3>Departamentos</h3>
+                <p>Gestiona los departamentos de la organización</p>
+                <a href="/api/v1/departamentos/">Ver Endpoint →</a>
+            </div>
+            
+            <div class="endpoint">
+                <span class="badge">GET, POST</span>
+                <h3>Puestos</h3>
+                <p>Administra los puestos de trabajo disponibles</p>
+                <a href="/api/v1/puestos/">Ver Endpoint →</a>
+            </div>
+            
+            <div class="endpoint">
+                <span class="badge">GET, POST</span>
+                <h3>Empleados</h3>
+                <p>Gestiona la información de los empleados</p>
+                <a href="/api/v1/empleados/">Ver Endpoint →</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Django REST Framework - API v1 | 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

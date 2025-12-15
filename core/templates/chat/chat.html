@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat RRHH</title>
+  <style>
+    body{font-family:Segoe UI, Tahoma, Arial; background:#f1f5f9; padding:20px}
+    .chat{max-width:720px;margin:0 auto;background:white;border-radius:8px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+    .messages{height:360px;overflow:auto;border:1px solid #eee;padding:12px;border-radius:6px;background:#fbfdff}
+    .msg{margin-bottom:10px}
+    .msg.user{text-align:right}
+    .bubble{display:inline-block;padding:10px 14px;border-radius:14px;max-width:80%}
+    .bubble.user{background:#667eea;color:white}
+    .bubble.bot{background:#efefef;color:#222}
+    form{display:flex;margin-top:12px}
+    input[type=text]{flex:1;padding:10px;border-radius:6px;border:1px solid #ddd}
+    button{margin-left:8px;padding:10px 16px;border-radius:6px;background:#667eea;color:white;border:none}
+  </style>
+</head>
+<body>
+  <div class="chat">
+    <h2>Asistente RRHH</h2>
+    <div class="messages" id="messages"></div>
+    <form id="form">
+      <input id="msg" type="text" placeholder="Escribe tu pregunta sobre vacaciones, beneficios, horario..." autocomplete="off" />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const messagesEl = document.getElementById('messages');
+    const form = document.getElementById('form');
+    const msgInput = document.getElementById('msg');
+
+    function append(text, who){
+      const div = document.createElement('div');
+      div.className = 'msg ' + (who==='user' ? 'user' : 'bot');
+      const span = document.createElement('div');
+      span.className = 'bubble ' + (who==='user' ? 'user' : 'bot');
+      span.textContent = text;
+      div.appendChild(span);
+      messagesEl.appendChild(div);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const text = msgInput.value.trim();
+      if(!text) return;
+      append(text, 'user');
+      msgInput.value = '';
+
+      try{
+        const res = await fetch('/chat/api/message/', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({message: text})
+        });
+        const data = await res.json();
+        append(data.reply || 'Sin respuesta', 'bot');
+      }catch(err){
+        append('Error al conectar con el servidor', 'bot');
+      }
+    });
+
+    // Mensaje inicial
+    append('¡Hola! Soy tu asistente de RRHH. Pregúntame sobre vacaciones, beneficios, horario o nómina.', 'bot');
+  </script>
+</body>
+</html>
