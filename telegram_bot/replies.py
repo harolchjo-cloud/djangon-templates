@@ -4,6 +4,9 @@ RULES = [
     (re.compile(r"\b(vacaci[oó]n|vacaciones|vacacion|licencia)\b", re.I),
      "Para solicitar vacaciones, crea una solicitud en el portal o contacta a RRHH. Dame tu nombre y fechas."),
 
+    (re.compile(r"\b(cita|turno de cita|consultar cita|reservar cita)\b", re.I),
+     "Para consultar tu cita, revisa el portal de empleados o escríbeme la fecha y te ayudo a verificarla."),
+
     (re.compile(r"\b(beneficio|beneficios|seguro|prestaciones)\b", re.I),
      "Los beneficios incluyen seguro médico y bonos. Revisa la documentación interna o contacta RRHH."),
 
